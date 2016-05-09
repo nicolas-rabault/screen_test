@@ -14,8 +14,8 @@ hdmi_mode=87
 hdmi_drive=2
 EOF
 
-#todo : find something downloadable
-#wget http://vector-magz.com/wp-content/uploads/2013/09/googly-eyes-clip-art.jpg
+mkdir $HOME/screen
 
+wget -O $HOME/screen/eyes.jpg https://raw.githubusercontent.com/nicolas-rabault/screen_test/master/eyes.jpg
 
-sed -i.bkp "/^exit/i #eyes print\nfbi --noverbose -T 2 /home/poppy/screen/eyes.jpg\n" /etc/rc.local
+sed -i.bkp "/^exit/i #eyes print\nfbi --noverbose -T 2 $HOME/screen/eyes.jpg\n" /etc/rc.local
