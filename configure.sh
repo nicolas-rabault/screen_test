@@ -16,18 +16,18 @@ hdmi_drive=2
 EOF
 
 #eyes setup
-mkdir $HOME/screen
+mkdir /root/screen
 
-wget -O $HOME/screen/eyes.jpg https://raw.githubusercontent.com/nicolas-rabault/screen_test/master/eyes.jpg
+wget -O /root/screen/eyes.jpg https://raw.githubusercontent.com/nicolas-rabault/screen_test/master/eyes.jpg
 
-sed -i.bkp "/^exit/i #eyes print\nfbi --noverbose -T 2 $HOME/screen/eyes.jpg\n" /etc/rc.local
+sed -i.bkp "/^exit/i #eyes print\nfbi --noverbose -T 2 /root/screen/eyes.jpg\n" /etc/rc.local
 
 #fake splash screen setup
 
-cat <<\EOF > /etc/init.d/asplashpopy
+cat <<\EOF > /etc/init.d/asplashpoppy
 #! /bin/sh
 ### BEGIN INIT INFO
-# Provides:          asplashpopy
+# Provides:          asplashpoppy
 # Required-Start:
 # Required-Stop:
 # Should-Start:
@@ -40,7 +40,7 @@ cat <<\EOF > /etc/init.d/asplashpopy
 
 do_start () {
 
-    /usr/bin/fbi -T 1 -noverbose $HOME/screen/alogo-poppy-800x480.jpg
+    /usr/bin/fbi -T 1 -noverbose /root/screen/alogo-poppy-800x480.jpg
     exit 0
 }
 
@@ -67,7 +67,7 @@ esac
 :
 EOF
 
-wget -O $HOME/screen/alogo-poppy-800x480.jpg https://raw.githubusercontent.com/nicolas-rabault/screen_test/master/logo-poppy-800x480.jpg
+wget -O /root/screen/alogo-poppy-800x480.jpg https://raw.githubusercontent.com/nicolas-rabault/screen_test/master/logo-poppy-800x480.jpg
 
-chmod a+x /etc/init.d/asplashpopy
-insserv /etc/init.d/asplashpopy
+chmod a+x /etc/init.d/asplashpoppy
+insserv /etc/init.d/asplashpoppy
